@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import LightRays from "@/components/LightRays";
 import Navbar from "@/components/navbar";
+import { PostHogProvider } from "@/components/PostHogProvider";
 
 const jetbrainsMono = JetBrains_Mono({subsets:['latin'],variable:'--font-mono'});
 
@@ -29,9 +30,10 @@ export default function RootLayout({
 }){
     return (
     <html lang="en" className={cn("font-mono", jetbrainsMono.variable)}>
-      <body 
+      <body
       className={`${geistSans.variable} ${geistMono.variable}  antialiased`}
       >
+      <PostHogProvider>
     <Navbar/>
 
        <div className="absolute inset-0 top-0 z-[-1] min-h-screen ">
@@ -54,6 +56,7 @@ export default function RootLayout({
 <main>
   {children}
 </main>
+      </PostHogProvider>
       </body>
     </html>
   );
