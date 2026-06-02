@@ -40,7 +40,7 @@ const bookingSchema = new Schema<BookingDocument>(
   },
 )
 
-bookingSchema.index({ eventId: 1 })
+bookingSchema.index({ eventId: 1, email: 1 }, { unique: true })
 
 bookingSchema.pre("save", async function (this: HydratedDocument<BookingDocument>) {
   this.email = this.email.trim().toLowerCase()
